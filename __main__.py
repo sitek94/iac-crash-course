@@ -13,16 +13,15 @@ bucket = aws.s3.Bucket('my-bucket',
     'index_document': 'index.html'
   })
 
-filepath = os.path.join(site_dir, 'index.html')
-
-mime_type, _ = mimetypes.guess_type(filepath)
-
-obj = aws.s3.BucketObject('index.html',
-  bucket=bucket.bucket,
-  source=pulumi.FileAsset(filepath),
-  acl='public-read',
-  content_type=mime_type 
-)
+for file in os.listdir(site_dir):
+  filepath = os.path.join(site_dir, file)
+  mime_type, _ = mimetypes.guess_type(filepath)
+  obj = aws.s3.BucketObject(file,
+    bucket=bucket.bucket,
+    source=pulumi.FileAsset(filepath),
+    acl='public-read',
+    content_type=mime_type 
+  )
 
 pulumi.export('bucket_name', bucket.bucket)
 pulumi.export('bucket_endpoint', pulumi.Output.concat('http://', bucket.website_endpoint))
