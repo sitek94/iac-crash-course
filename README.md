@@ -1,5 +1,7 @@
 # Infrastructure as Code
 
+[Infrastructure as Code - Crash Course](https://www.youtube.com/watch?v=EtEb40LE5zQ) by Beau Carnes
+
 ## Export bucket endpoint
 
 ```bash
