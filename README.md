@@ -48,3 +48,21 @@ pulumi stack select <name>
 # Set site_dir (or edit config file)
 pulumi config set iac-lab:site_dir www
 ```
+
+## Destroy resources
+
+It's important to destroy the resources when you finish practicing to avoid potential costs.
+
+```bash
+# Destroy production stack and resources
+pulumi destroy
+pulumi stack rm
+
+# Repeat the above steps for development stack
+pulumi stack select dev
+pulumi destroy
+pulumi stack rm
+
+# Verify that the stacks are gone
+pulumi stack ls
+```
