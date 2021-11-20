@@ -28,8 +28,23 @@ Current stack outputs (2):
 
 ## [Make the bucket configurable](https://www.youtube.com/watch?v=EtEb40LE5zQ&t=1068s)
 
-Store site directory in config file, instead of hard coding it.
-
+```bash
+# Store site directory in config file, instead of hard coding it.
+pulumi config set iac-lab:site_dir www
 ```
+
+## Production stack
+
+```bash
+# Init the stack
+pulumi stack init production
+
+# List stacks
+pulumi stack ls
+
+# Select stack
+pulumi stack select <name>
+
+# Set site_dir (or edit config file)
 pulumi config set iac-lab:site_dir www
 ```
