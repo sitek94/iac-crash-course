@@ -25,3 +25,11 @@ Current stack outputs (2):
   </body>
 </html>
 ```
+
+## [Make the bucket configurable](https://www.youtube.com/watch?v=EtEb40LE5zQ&t=1068s)
+
+Store site directory in config file, instead of hard coding it.
+
+```
+pulumi config set iac-lab:site_dir www
+```

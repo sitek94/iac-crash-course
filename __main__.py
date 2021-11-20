@@ -5,14 +5,16 @@ import pulumi_aws as aws
 import os
 import mimetypes
 
+config = pulumi.Config()
+site_dir = config.require("site_dir")
+
 bucket = aws.s3.Bucket('my-bucket',
   website={
     'index_document': 'index.html'
   })
 
-filepath = os.path.join('www', 'index.html')
+filepath = os.path.join(site_dir, 'index.html')
 
-# mime
 mime_type, _ = mimetypes.guess_type(filepath)
 
 obj = aws.s3.BucketObject('index.html',
